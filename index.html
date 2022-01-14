@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List App</title>
+  <script>
+    function addItem() {
+      var newItem = document.createElement("div");
+      newItem.innerHTML = document.getElement("box").value;
+      newItem.onclick = removeItem;
+      document.getElementById("list").appendChild(newItem);
+      saveList();
+    }
+    function removeItem() {
+      document.getElementById("list").removeChild(this);
+      saveList();
+    }
+    function saveList() {
+      localStorage.storedList = document.getElementById("list").innerHTML;
+    }
+    function loadList() {
+      document.getElementById("list").innerHTML = localStorage.storedList;
+      for(var i = 0; i < list.children.length; i++) {
+        list.children[i].onclick = removeItem;
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>My Lists</p>
+  <p>To-Do List</p>
+  <br/>
+  <input type="text" id="box" value="Type here to add task"/>
+  <br/>
+  <input type="button" value="Add Item" onclick="addItem();"/>
+  <br/>
+  <div id="list"></div>
+  <script>
+    if(localStorage.storedList) {
+      loadList();
+    }
+  </script>
+  <section class="w3-row-padding w3-section w3-center" id="games" style="padding-top: 50px">
+    <iframe
+      width="350px"
+      height="350px"
+      frameborder="0px"
+      style="border: 0px">
+    </iframe>
+  </body>
+</html>
